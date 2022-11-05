@@ -1,7 +1,16 @@
-@import '../public/fonts/fonts.scss';
+@import "variables.scss";
+@import "../public/fonts/fonts.scss";
 /* Font import from public folder */
 
 * {
-  font-family: "Biennale Regular";
+  font-family: $fontRegular;
   font-size: 14px;
 }
+.avatar{
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+/*  components css */
+@import "../components/button/button.scss";
