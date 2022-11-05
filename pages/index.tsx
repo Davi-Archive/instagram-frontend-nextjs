@@ -1,29 +1,8 @@
-import { useState, useRef } from "react";
-import Avatar from "../components/avatar";
-import Button from "../components/button";
-import UploadImage from "../components/uploadImage";
+import Login from "../components/login";
 
-export default function Home() {
-  const [image, setImage] = useState<any>("");
-  const referenceInput = useRef(null);
+export default function Index() {
+
   return (
-    <>
-      <h1>Ola Mundo</h1>
-      <Avatar />
-      <div style={{ width: "200px" }}>
-        <UploadImage
-        setImage={setImage}
-        imagePreview={image?.preview}
-        setRef={(ref:any)=>referenceInput.current = ref}
-        />
-        <Button
-          type="submit"
-          text="submit"
-          color="primary"
-          onClick={() => console.log("botao clicado.")}
-          isDisabled={true}
-        />
-      </div>
-    </>
+    <Login />
   );
 }
