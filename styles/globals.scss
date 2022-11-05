@@ -5,15 +5,23 @@
 * {
   font-family: $fontRegular;
   font-size: 14px;
+
+  html,
+  body,
+  #__next {
+    height: 100%;
+    margin:0;
+  }
 }
-.avatar{
+.avatar {
   border-radius: 50%;
   object-fit: cover;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
 /*  components css */
 @import "../components/button/button.scss";
+@import "./paginaPublica.scss"
