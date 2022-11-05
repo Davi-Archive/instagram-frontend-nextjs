@@ -11,6 +11,9 @@
   object-fit: cover;
 }
 
+.hidden{
+  display: none;
+}
 
 /*  components css */
 @import "../components/button/button.scss";
