@@ -3,5 +3,5 @@ export interface UploadImage {
   setImage?: any;
   imagePreview?: any;
   imagemPreviewClassName?: string;
-  setRef:any;
+  setRef?:any;
 }

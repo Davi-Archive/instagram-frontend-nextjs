@@ -5,14 +5,13 @@
 * {
   font-family: $fontRegular;
   font-size: 14px;
-
 }
 
 html,
 body,
 #__next {
   height: 100%;
-  margin:0;
+  margin: 0;
 }
 
 .avatar {
@@ -24,20 +23,37 @@ body,
   display: none;
 }
 
-input{
-  &::placeholder{
+input {
+  &::placeholder {
     /* chrome, opera, safari, firefox*/
     color: $cinza02;
     opacity: 1;
   }
-  &:-ms-input-placeholder{
+  &:-ms-input-placeholder {
     /*internet explorer 10 & 11 */
     color: $cinza02;
   }
 
-  &::-ms-input-placeholder{
+  &::-ms-input-placeholder {
     /*edge */
     color: $cinza02;
+  }
+}
+
+.desktop{
+  @media screen and (min-width: $desktopBreakpoint) {
+    display: block;
+  }
+  @media screen and (max-width: calc($desktopBreakpoint - 1px)) {
+    display: none;
+  }
+}
+.mobile{
+  @media screen and (min-width: $desktopBreakpoint) {
+    display: none;
+  }
+  @media screen and (max-width: calc($desktopBreakpoint - 1px)) {
+    display: block;
   }
 }
 
