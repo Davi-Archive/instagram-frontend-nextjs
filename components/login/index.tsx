@@ -11,8 +11,8 @@ const Login = () => {
   const [senha, setSenha] = useState("");
   return (
     <section className={`paginaLogin paginaPublica`}>
-      <div className={`logoContainer`}>
-        <Image src={logo} alt="Instagram Logo" fill />
+      <div className="logoContainer">
+        <Image src={logo} alt="Instagram Logo" layout="fill" className="logo" />
       </div>
 
       <div className={`conteudoPaginaPublica`}>

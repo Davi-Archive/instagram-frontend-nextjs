@@ -6,13 +6,15 @@
   font-family: $fontRegular;
   font-size: 14px;
 
-  html,
-  body,
-  #__next {
-    height: 100%;
-    margin:0;
-  }
 }
+
+html,
+body,
+#__next {
+  height: 100%;
+  margin:0;
+}
+
 .avatar {
   border-radius: 50%;
   object-fit: cover;
@@ -22,6 +24,24 @@
   display: none;
 }
 
+input{
+  &::placeholder{
+    /* chrome, opera, safari, firefox*/
+    color: $cinza02;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder{
+    /*internet explorer 10 & 11 */
+    color: $cinza02;
+  }
+
+  &::-ms-input-placeholder{
+    /*edge */
+    color: $cinza02;
+  }
+}
+
 /*  components css */
 @import "../components/button/button.scss";
-@import "./paginaPublica.scss"
+@import "./paginaPublica.scss";
+@import "../components/inputPublico/inputPublico.scss";
