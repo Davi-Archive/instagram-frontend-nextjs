@@ -19,7 +19,7 @@ body,
   object-fit: cover;
 }
 
-.hidden {
+.oculto {
   display: none;
 }
 
@@ -61,3 +61,4 @@ input {
 @import "../components/button/button.scss";
 @import "./paginaPublica.scss";
 @import "../components/inputPublico/inputPublico.scss";
+@import '../pages/cadastro/cadastro.scss';

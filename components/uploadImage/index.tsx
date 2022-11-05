@@ -1,69 +1,79 @@
-import Image from "next/image";
-import { useRef,useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { UploadImage } from "../../types/UploadImageType";
 
-const UploadImage = ({
-  className,
-  setImage,
-  imagePreview,
-  imagemPreviewClassName,
-  setRef,
-}: UploadImage) => {
-  const inputRef = useRef(null);
+export default function UploadImagem({
+  className = "",
+  setImagem,
+  imagemPreview,
+  imagemPreviewClassName = "",
+  aoSetarAReferencia,
+}:UploadImage) {
+  const referenciaInput = useRef(null);
 
   useEffect(() => {
-    if (!setRef) return;
+    if (!aoSetarAReferencia) {
+      return;
+    }
 
-    setRef(inputRef?.current);
-  }, [inputRef?.current]);
-
+    aoSetarAReferencia(referenciaInput?.current);
+  }, [referenciaInput?.current]);
 
   const abrirSeletorArquivos = () => {
-    //@ts-ignore
-    inputRef?.current?.click();
+    referenciaInput?.current?.click();
   };
 
-  const aoAlterarImagem = () => {
-    //@ts-ignore
-    if (!inputRef?.current?.files?.length) return;
+  const aoAleterarImagem = () => {
+    if (!referenciaInput?.current?.files?.length) {
+      return;
+    }
 
-    //@ts-ignore
-    const arquivo = inputRef?.current?.files[0];
+    const arquivo = referenciaInput?.current?.files[0];
+    obterUrlDaImagemEAtualizarEstado(arquivo);
+  };
+
+  const obterUrlDaImagemEAtualizarEstado = (arquivo:any) => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(arquivo);
     fileReader.onloadend = () => {
-      setImage({
+      setImagem({
         preview: fileReader.result,
         arquivo,
       });
     };
   };
+
+  const aoSoltarAImagem = (e:any) => {
+    e.preventDefault();
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const arquivo = e.dataTransfer.files[0];
+      obterUrlDaImagemEAtualizarEstado(arquivo);
+    }
+  };
+
   return (
     <div
-      className={`uploadImageContainer ${className}`}
+      className={`uploadImagemContainer ${className}`}
       onClick={abrirSeletorArquivos}
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={aoSoltarAImagem}
     >
-      <button>Abrir seletor de arquivos</button>
-      {imagePreview && (
-        <div className={`imagePreviewContainer`}>
-          <Image
-            src={imagePreview}
+      {imagemPreview && (
+        <div className="imagemPreviewContainer">
+          <img
+            src={imagemPreview}
             alt="imagem preview"
-            className={`${imagemPreviewClassName}`}
-            width={100}
-            height={100}
+            className={imagemPreviewClassName}
           />
         </div>
       )}
+
       <input
         type="file"
-        className="hidden"
-        accept="image"
-        onChange={aoAlterarImagem}
-        ref={inputRef}
+        className="oculto"
+        accept="image/*"
+        ref={referenciaInput}
+        onChange={aoAleterarImagem}
       />
     </div>
   );
-};
-
-export default UploadImage;
+}

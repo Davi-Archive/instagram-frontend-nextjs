@@ -15,6 +15,7 @@ import search from "./search.svg";
 import userBlue from "./userBlue.svg";
 import userGray from "./userGray.svg";
 import xCircle from "./xCircle.svg";
+import Camera from "./camera.svg";
 
 export {
   avatar,
@@ -34,4 +35,5 @@ export {
   userBlue,
   userGray,
   xCircle,
+  Camera,
 };

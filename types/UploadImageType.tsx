@@ -1,7 +1,7 @@
 export interface UploadImage {
   className?: React.ButtonHTMLAttributes<HTMLButtonElement>["className"];
-  setImage?: any;
-  imagePreview?: any;
+  setImagem?: any;
+  imagemPreview?: any;
   imagemPreviewClassName?: string;
-  setRef?:any;
+  aoSetarAReferencia?: any;
 }

@@ -12,19 +12,20 @@ const Cadastro = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [senhaConfirma, setSenhaConfirma] = useState("");
-  const [imagem, setImagem] = useState("");
+  const [imagem, setImagem] = useState(null);
   return (
-    <section className={`paginaLogin paginaPublica`}>
+    <section className={`paginaCadastro paginaPublica`}>
       <div className="logoContainer desktop">
         <Image src={logo} alt="Instagram Logo" layout="fill" className="logo" />
       </div>
-      
+
       <div className={`conteudoPaginaPublica`}>
         <form>
           <UploadImage
-          imagemPreviewClassName="avatar avatarPreview"
-          imagePreview={imagem?.preview || avatar}
-          setImage={setImagem}
+            imagemPreviewClassName="avatar avatarPreview"
+            //@ts-ignore
+            imagemPreview={imagem?.preview || avatar.src}
+            setImagem={setImagem}
           />
 
           <InputPublico
@@ -61,7 +62,7 @@ const Cadastro = () => {
         </form>
         <div className="rodapePaginaPublica">
           <p>Já possui uma conta?</p>
-          <Link href="/">Faça seu login agora</Link>
+          <Link href="/"> Faça seu login agora!</Link>
         </div>
       </div>
     </section>
