@@ -28,9 +28,8 @@ const Login = () => {
         login: email,
         senha
       }
-      const response = await usuarioService.login(usuarioLoginObject);
-
-      toast.success(response.data.name, { autoClose: 3000 });
+      await usuarioService.login(usuarioLoginObject);
+      toast.success('Logado com sucesso', { autoClose: 3000 });
     } catch (error) {
       console.log(error);
       toast("Erro ao Logar usuario", {
