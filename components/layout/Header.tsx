@@ -1,73 +1,41 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { logoHorizontal, search } from "../../public/image";
+import ApiUsuarioService from "../../services/ApiUsuarioService";
 import Navbar from "./Navbar";
 import ResultadoPesquisa from "./ResultadoPesquisa";
 
+const usuarioService = new ApiUsuarioService();
+
 const Header = () => {
-  const [resultadoPesquisa, setResultadoPesquisa] = useState<any>(['']);
+  const [resultadoPesquisa, setResultadoPesquisa] = useState<any>([]);
   const [termoPesquisado, setTermoPesquisado] = useState<any>("");
+
+  const router = useRouter();
 
   const aoPesquisar = async (e: any) => {
      setTermoPesquisado(e.target.value);
      setResultadoPesquisa([]);
 
-     if (e.target.value.length < 3) {
-       return;
-     }
+     if (e.target.value.length < 3) return;
 
-     try {
 
-       setResultadoPesquisa([
-         {
-           avatar: "",
-           nome: "Douglas",
-           email: "douglas@devagram.com",
-           _id: "1232121456",
-         },
-         {
-           avatar: "",
-           nome: "Davi",
-           email: "davi@daci.com",
-           _id: "12234553456",
-         }
-       ]);
-     } catch (e) {
-       alert("Erro ao pesquisar usuario.");
-     }
-
-  };
+    try {
+      const {data} = await usuarioService.pesquisa(termoPesquisado);
+      setResultadoPesquisa(data)
+    } catch (error) {
+      toast.error('Erro ao pesquisar.')
+    }
+  }
 
   const aoClicarResultadoPesquisa = (id: string) => {
-    console.log(id);
-    if (termoPesquisado < 3) return;
+    setTermoPesquisado('')
+    setResultadoPesquisa([]);
+    
+    router.push(`/perfil/${id}`);
 
-    setResultadoPesquisa([
-      {
-        avatar: "",
-        nome: "Douglas",
-        email: "douglas@devagram.com",
-        _id: "124336464456",
-      },
-      {
-        avatar: "",
-        nome: "Davi",
-        email: "davi@daci.com",
-        _id: "1223456",
-      },
-      {
-        avatar: "",
-        nome: "mikey",
-        email: "douglas@dougles.com",
-        _id: "123412141456",
-      },
-      {
-        avatar: "",
-        nome: "greusame",
-        email: "greusame@greusame.com",
-        _id: "1232446456",
-      },
-    ]);
   };
 
   return (
@@ -98,6 +66,7 @@ const Header = () => {
               nome={r.nome}
               email={r.email}
               key={index}
+              id={r._id}
               onClick={aoClicarResultadoPesquisa}
             />
           ))}

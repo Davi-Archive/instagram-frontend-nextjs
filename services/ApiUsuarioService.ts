@@ -24,7 +24,11 @@ export default class ApiUsuarioService extends HttpService {
         return await this.post('/cadastro', dados)
     }
 
-    estaAuthenticado(){
+    estaAuthenticado() {
         return localStorage.getItem('token') !== null;
+    }
+
+    async pesquisa(termoDaPesquisa: any) {
+        return this.get('/pesquisa?filtro=' + termoDaPesquisa)
     }
 }

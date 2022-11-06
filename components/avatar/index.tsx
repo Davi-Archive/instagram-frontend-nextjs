@@ -5,18 +5,19 @@ import { avatar } from "../../public/image";
 const Avatar = ({ src }: any) => {
   const getAvatar = () => {
     if (src && src !== "undefined") {
+      console.log(src)
       return src;
     }
-    return avatar
+    return avatar.src;
   };
 
   return (
-    <Image
-    src={getAvatar()}
-    alt='avatar'
-    className={`avatar`}
+    <img
+      src={getAvatar()}
+      alt="avatar"
+      className={`avatar`}
     />
-  )
+  );
 };
 
 export default Avatar;
