@@ -12,7 +12,7 @@ import {
   validarNome,
   validarSenha,
 } from "../../utils/validadores";
-import ApiUsuarioService from "../../services/ApiUsuarioService";
+import ApiUsuarioService from "../../services/ApiUsuarioService"
 import { toast } from "react-toastify";
 
 const usuarioService = new ApiUsuarioService();

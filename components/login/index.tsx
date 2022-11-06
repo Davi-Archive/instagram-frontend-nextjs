@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import ApiUsuarioService from "../../services/ApiUsuarioService";
 
 const usuarioService = new ApiUsuarioService();
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -23,12 +24,13 @@ const Login = () => {
     setEstaSubmentendo(true);
     e.preventDefault();
     try {
-      const usuarioLoginObject = new FormData();
-      usuarioLoginObject.append('login', email)
-      usuarioLoginObject.append('senha', senha)
+      const usuarioLoginObject = {
+        login: email,
+        senha
+      }
       const response = await usuarioService.login(usuarioLoginObject);
 
-      toast.success(response.data.msg, { autoClose: 3000 });
+      toast.success(response.data.name, { autoClose: 3000 });
     } catch (error) {
       console.log(error);
       toast("Erro ao Logar usuario", {
@@ -41,7 +43,7 @@ const Login = () => {
   return (
     <section className={`paginaLogin paginaPublica`}>
       <div className="logoContainer">
-        <Image src={logo} alt="Instagram Logo" layout="fill" className="logo" />
+        <Image src={logo} alt="Instagram Logo" fill className="logo" />
       </div>
 
       <div className={`conteudoPaginaPublica`}>

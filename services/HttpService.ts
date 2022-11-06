@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+//process.env.NEXT_PUBLIC_API_URL + '/api'
+
 export default class HttpService {
     constructor() {
         //@ts-ignore
@@ -9,7 +11,7 @@ export default class HttpService {
     }
     async post(url:any, data:any) {
         //@ts-ignore
-       const res = await this.axios.post(url, data);
+        const res = await this.axios.post(url, data);
        return res;
     }
 }
