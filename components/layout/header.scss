@@ -41,6 +41,36 @@
       }
     }
   }
+  .resultadoPesquisaContainer {
+    position: absolute;
+    background-color: $white;
+    width: 100%;
+    z-index: 0;
+
+    .resultadoPesquisa{
+      display: flex;
+      padding: 10px 16px;
+      align-items: center;
+
+      &:hover{
+        background-color: $cinza00;
+      }
+
+      .avatar{
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+      }
+
+      .informacoesUsuario{
+        >*{
+          display:block;
+          font-size:12px;
+          color: $cinza04;
+        }
+      }
+    }
+  }
 
   @media screen and (min-width: $desktopBreakpoint) {
     background-color: $white;
@@ -70,6 +100,15 @@
           }
         }
       }
+    }
+
+    .resultadoPesquisaContainer{
+      width:24%;
+      margin: auto;
+      padding-bottom: 5px;
+      right: 0;
+      left: 7%;
+      box-shadow: 0 4px 5px $cinza02;
     }
   }
 }

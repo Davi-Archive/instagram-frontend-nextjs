@@ -30,19 +30,7 @@ const Header = () => {
            nome: "Davi",
            email: "davi@daci.com",
            _id: "12234553456",
-         },
-         {
-           avatar: "",
-           nome: "mikey",
-           email: "douglas@dougles.com",
-           _id: "1236786456",
-         },
-         {
-           avatar: "",
-           nome: "greusame",
-           email: "greusame@greusame.com",
-           _id: "123486756",
-         },
+         }
        ]);
      } catch (e) {
        alert("Erro ao pesquisar usuario.");
@@ -104,12 +92,12 @@ const Header = () => {
       </div>
       {resultadoPesquisa.length > 0 && (
         <div className="resultadoPesquisaContainer">
-          {resultadoPesquisa.map((r: any) => (
+          {resultadoPesquisa.map((r: any,index:number) => (
             <ResultadoPesquisa
               avatar={r.avatar}
               nome={r.nome}
               email={r.email}
-              key={r._id}
+              key={index}
               onClick={aoClicarResultadoPesquisa}
             />
           ))}

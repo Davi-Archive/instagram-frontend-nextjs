@@ -4,7 +4,7 @@ import Avatar from "../avatar";
 const ResultadoPesquisa = ({ nome, avatar, email, onClick, id }: any) => {
     return (
     <div className="resultadoPesquisa" onClick={()=> onClick(id)}>
-      {avatar && <Avatar src={avatar} />}
+      <Avatar src={avatar} />
       <div className="informacoesUsuario">
         <strong>{nome}</strong>
         <span>{email}</span>

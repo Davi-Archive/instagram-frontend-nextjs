@@ -79,6 +79,10 @@ input {
   }
 }
 
+strong{
+  font-family: $fontBold;
+}
+
 /* toastify css*/
 @import "react-toastify/dist/ReactToastify.css";
 
