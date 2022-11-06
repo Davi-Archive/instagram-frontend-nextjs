@@ -40,7 +40,7 @@ input {
   }
 }
 
-.mensagemValidacao{
+.mensagemValidacao {
   display: block;
   color: $vermelho;
   font-size: 90%;
@@ -48,7 +48,7 @@ input {
   margin-bottom: 15px;
 }
 
-.desktop{
+.desktop {
   @media screen and (min-width: $desktopBreakpoint) {
     display: block;
   }
@@ -56,7 +56,7 @@ input {
     display: none;
   }
 }
-.mobile{
+.mobile {
   @media screen and (min-width: $desktopBreakpoint) {
     display: none;
   }
@@ -65,12 +65,27 @@ input {
   }
 }
 
+.barraNavegacao {
+  ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 10px 0px;
+
+    li {
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+}
+
 /* toastify css*/
-@import 'react-toastify/dist/ReactToastify.css';
+@import "react-toastify/dist/ReactToastify.css";
 
 /*  components css */
 @import "../components/button/button.scss";
 @import "./paginaPublica.scss";
 @import "../components/inputPublico/inputPublico.scss";
-@import '../pages/cadastro/cadastro.scss';
-@import '../components/layout/header.scss'
+@import "../pages/cadastro/cadastro.scss";
+@import "../components/layout/header.scss";
+@import "../components/layout/footer.scss";

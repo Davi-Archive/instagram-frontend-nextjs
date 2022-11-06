@@ -6,44 +6,70 @@
     padding: 8px 16px;
 
     .logoHeaderPrincipal {
-    position: relative;
+      position: relative;
+      min-width: 100px;
       width: 140px;
       height: 30px;
     }
-    .barraPesquisa{
-        position:relative;
-        flex:1;
-        margin-left: 16px;
-        display: flex;
-        align-items: center;
+    .barraPesquisa {
+      position: relative;
+      flex: 1;
+      margin-left: 16px;
+      display: flex;
+      align-items: center;
 
-        .containerImagemLupa{
-            position:absolute;
-            width: 20px;
-            height:20px;
-            left: 8px;
+      .containerImagemLupa {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 8px;
+      }
+
+      input {
+        background-color: $corPrimaria04;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        padding: 8px 8px 8px 36px;
+        font-family: $fontLight;
+        border-radius: 4px;
+        color: $corPrimaria02;
+
+        &:focus {
+          border: 1px solid $corPrimaria02;
         }
-
-        input{
-            background-color: $corPrimaria04;
-            border: none;
-            outline: none;
-            font-size: 12px;
-            padding: 8px 8px 8px 36px;
-            font-family: $fontLight;
-            border-radius: 4px;
-            color: $corPrimaria02;
-
-            &:focus{
-                border: 1px solid $corPrimaria02;
-            }
-        }
+      }
     }
   }
 
-  @media screen and (min-width:$desktopBreakpoint) {
-        background-color: $white;
-        border: none;
-        
+  @media screen and (min-width: $desktopBreakpoint) {
+    background-color: $white;
+    border: none;
+
+    .conteudoCabecalhoPrincipal {
+      max-width: 60%;
+      margin: auto;
+      align-items: center;
+      justify-content: center;
+      .logoHeaderPrincipal {
+        width: 200px;
+        height: 30px;
+      }
+      .barraPesquisa {
+        flex: 0.6;
+        margin: 0 10px 0 30px;
+
+        input {
+          width: 100%;
+        }
+      }
+      .barraNavegacao {
+        ul {
+          li {
+            margin: 0 0 0 20px;
+          }
+        }
+      }
+    }
   }
 }

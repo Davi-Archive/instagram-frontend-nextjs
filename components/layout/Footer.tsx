@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./Navbar";
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <footer className="rodape mobile">
+      <Navbar />
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
