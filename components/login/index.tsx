@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { validarEmail, validarSenha } from "../../utils/validadores";
 
 import InputPublico from "../inputPublico";
 import { envelope, key, logo } from "../../public/image";
@@ -9,6 +10,10 @@ import Button from "../button";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const validarFormulario = () => {
+    return validarEmail(email) && validarSenha;
+  };
   return (
     <section className={`paginaLogin paginaPublica`}>
       <div className="logoContainer">
@@ -23,6 +28,8 @@ const Login = () => {
             texto="Email"
             aoAlterarValor={(e: any) => setEmail(e.target.value)}
             valor={email}
+            mensagemValidacao="O endereço informado é inválido."
+            exibirMensagemValidacao={email && !validarEmail(email)}
           />
 
           <InputPublico
@@ -31,9 +38,11 @@ const Login = () => {
             texto="Senha"
             aoAlterarValor={(e: any) => setSenha(e.target.value)}
             valor={senha}
+            mensagemValidacao="A senha informada é inválida."
+            exibirMensagemValidacao={senha && !validarSenha(senha)}
           />
 
-          <Button type="submit" text="Login" isDisabled={false} />
+          <Button type="submit" text="Login" isDisabled={!validarFormulario()} />
         </form>
         <div className="rodapePaginaPublica">
           <p>Não possui cadastro?</p>

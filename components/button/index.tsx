@@ -5,7 +5,7 @@ const Button = ({
     type='button',
     text,
     color='primary',
-    isDisabled = false,
+    isDisabled,
     onClick
 }:ButtonType) => {
   return (

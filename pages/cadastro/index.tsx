@@ -6,6 +6,12 @@ import InputPublico from "../../components/inputPublico";
 import { avatar, envelope, key, logo, userBlue } from "../../public/image";
 import Button from "../../components/button";
 import UploadImage from "../../components/uploadImage";
+import {
+  validarConfirmacaoSenha,
+  validarEmail,
+  validarNome,
+  validarSenha,
+} from "../../utils/validadores";
 
 const Cadastro = () => {
   const [nome, setNome] = useState("");
@@ -13,6 +19,16 @@ const Cadastro = () => {
   const [senha, setSenha] = useState("");
   const [senhaConfirma, setSenhaConfirma] = useState("");
   const [imagem, setImagem] = useState(null);
+
+  const validarFormulario = () => {
+    return (
+      validarNome(nome) &&
+      validarEmail(email) &&
+      validarSenha(senha) &&
+      validarConfirmacaoSenha(senha, senhaConfirma)
+    );
+  };
+
   return (
     <section className={`paginaCadastro paginaPublica`}>
       <div className="logoContainer desktop">
@@ -34,6 +50,8 @@ const Cadastro = () => {
             texto="Nome"
             aoAlterarValor={(e: any) => setNome(e.target.value)}
             valor={nome}
+            mensagemValidacao="O nome digitado não é válido."
+            exibirMensagemValidacao={nome && !validarNome(nome)}
           />
           <InputPublico
             image={envelope}
@@ -41,6 +59,8 @@ const Cadastro = () => {
             texto="Email"
             aoAlterarValor={(e: any) => setEmail(e.target.value)}
             valor={email}
+            mensagemValidacao="O email digitado não é válido."
+            exibirMensagemValidacao={email && !validarEmail(email)}
           />
 
           <InputPublico
@@ -49,6 +69,8 @@ const Cadastro = () => {
             texto="Senha"
             aoAlterarValor={(e: any) => setSenha(e.target.value)}
             valor={senha}
+            mensagemValidacao="A senha digitada não é válida."
+            exibirMensagemValidacao={senha && !validarSenha(senha)}
           />
           <InputPublico
             image={key}
@@ -56,9 +78,17 @@ const Cadastro = () => {
             texto="Confirme sua senha"
             aoAlterarValor={(e: any) => setSenhaConfirma(e.target.value)}
             valor={senhaConfirma}
+            mensagemValidacao="A confirmação não é igual a senha digitada não é válida."
+            exibirMensagemValidacao={
+              senhaConfirma && !validarConfirmacaoSenha(senha, senhaConfirma)
+            }
           />
 
-          <Button type="submit" text="Cadastrar" isDisabled={false} />
+          <Button
+            type="submit"
+            text="Cadastrar"
+            isDisabled={!validarFormulario()}
+          />
         </form>
         <div className="rodapePaginaPublica">
           <p>Já possui uma conta?</p>

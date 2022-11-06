@@ -3,5 +3,5 @@ export interface ButtonType {
   text: String;
   color?: React.ButtonHTMLAttributes<HTMLButtonElement>["color"];
   onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>["onClick"];
-  isDisabled?: React.ButtonHTMLAttributes<HTMLButtonElement>["disabled"];
+  isDisabled?: any|React.ButtonHTMLAttributes<HTMLButtonElement|any>["disabled"];
 }
