@@ -26,4 +26,6 @@ export default class HttpService {
         //@ts-ignore
         return await this.axios.get(url)
     }
+
+    
 }

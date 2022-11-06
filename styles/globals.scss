@@ -79,7 +79,7 @@ input {
   }
 }
 
-strong{
+strong {
   font-family: $fontBold;
 }
 
@@ -93,3 +93,4 @@ strong{
 @import "../pages/cadastro/cadastro.scss";
 @import "../components/layout/header.scss";
 @import "../components/layout/footer.scss";
+@import "../components/feed/feed.scss";

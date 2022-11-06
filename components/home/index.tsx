@@ -1,8 +1,9 @@
 import comAutorizacao from "../../hoc/comAutorizacao";
+import Feed from "../feed";
 
-export const Home = () => {
+export const Home = ({usuarioLogado}:any) => {
   return (
-    <div>Home</div>
+    <Feed usuarioLogado={usuarioLogado} />
   )
 }
 

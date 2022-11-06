@@ -52,6 +52,7 @@ const Navbar = ({ className }: any) => {
   };
 
   const obterImagem = (nome: any) => {
+    //@ts-ignore
     const rotaAtivada = mapaDeRotas[nome];
 
     if (rotaAtiva === nome) {
@@ -62,6 +63,7 @@ const Navbar = ({ className }: any) => {
 
   const aoClicarnoIcone = (nomeRota: any) => {
     setRotaAtiva(nomeRota);
+    //@ts-ignore
     router.push(mapaDeRotas[nomeRota].rotasAtivacao[0]);
   };
 

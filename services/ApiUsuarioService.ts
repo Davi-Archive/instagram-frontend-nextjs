@@ -31,4 +31,13 @@ export default class ApiUsuarioService extends HttpService {
     async pesquisa(termoDaPesquisa: any) {
         return this.get('/pesquisa?filtro=' + termoDaPesquisa)
     }
+
+    obterInformacoesDoUsuarioLogado(){
+        return {
+            id: localStorage.getItem('id'),
+            nome: localStorage.getItem('name'),
+            email: localStorage.getItem('email'),
+            avatar: localStorage.getItem('avatar')
+        }
+     }
 }
