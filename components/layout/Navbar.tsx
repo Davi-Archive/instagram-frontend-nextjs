@@ -7,7 +7,8 @@ import {
   plusSquareFilled,
 } from "../../public/image";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const mapaDeRotas = {
   home: {
@@ -28,93 +29,65 @@ const mapaDeRotas = {
 };
 
 const Navbar = ({ className }: any) => {
-  const [home, setHome] = useState(false);
-  const [usuario, setUsuario] = useState(false);
-  const [seguir, setSeguir] = useState(false);
+  const [rotaAtiva, setRotaAtiva] = useState("home");
+  const router = useRouter();
 
-  const [rotasAtivacao, setRotaAtiva] = useState('/')
+  useEffect(() => {
+    definirRotaAtiva();
+  }, [router.asPath]);
 
-  const buttonActive = () => {
-    let active;
-    if (active) {
-      active = false;
-      return true;
+  const definirRotaAtiva = () => {
+    const chavesDoMapaDeRotas = Object.keys(mapaDeRotas);
+    const indiceAtivo = chavesDoMapaDeRotas.findIndex((chave: any) => {
+      //@ts-ignore
+      return mapaDeRotas[chave].rotasAtivacao.includes(
+        window.location.pathname
+      );
+    });
+    if (indiceAtivo === -1) {
+      setRotaAtiva("home");
+    } else {
+      setRotaAtiva(chavesDoMapaDeRotas[indiceAtivo]);
     }
-    if (!active) {
-      active = true;
-      return false;
+  };
+
+  const obterImagem = (nome: any) => {
+    const rotaAtivada = mapaDeRotas[nome];
+
+    if (rotaAtiva === nome) {
+      return rotaAtivada.imagemAtivo;
     }
+    return rotaAtivada.imagemPadrao;
+  };
+
+  const aoClicarnoIcone = (nomeRota: any) => {
+    setRotaAtiva(nomeRota);
+    router.push(mapaDeRotas[nomeRota].rotasAtivacao[0]);
   };
 
   return (
     <nav className={`barraNavegacao ${className}`}>
       <ul>
-        {home ? (
-          <li>
-            <Image
-              src={homePurple}
-              alt="home"
-              width={20}
-              height={20}
-              onClick={() => setHome(!home)}
-            />
-          </li>
-        ) : (
-          <li>
-            <Image
-              src={homeGray}
-              alt="home"
-              width={20}
-              height={20}
-              onClick={() => setHome(!home)}
-            />
-          </li>
-        )}
+        <li onClick={() => aoClicarnoIcone("home")}>
+          <Image src={obterImagem("home")} alt="home" width={20} height={20} />
+        </li>
 
-        {usuario ? (
-          <li>
-            <Image
-              src={userBlue}
-              alt="usuario"
-              width={20}
-              height={20}
-              onClick={() => setUsuario(!usuario)}
-            />
-          </li>
-        ) : (
-          <li>
-            <Image
-              src={userGray}
-              alt="usuario"
-              data-testid="close-icon"
-              width={20}
-              height={20}
-              onClick={() => setUsuario(!usuario)}
-            />
-          </li>
-        )}
-
-        {seguir ? (
-          <li>
-            <Image
-              src={plusSquareFilled}
-              alt="seguir"
-              width={20}
-              height={20}
-              onClick={() => setSeguir(!seguir)}
-            />
-          </li>
-        ) : (
-          <li>
-            <Image
-              src={plusSquareGray}
-              alt="seguir"
-              width={20}
-              height={20}
-              onClick={() => setSeguir(!seguir)}
-            />
-          </li>
-        )}
+        <li onClick={() => aoClicarnoIcone("perfil")}>
+          <Image
+            src={obterImagem("perfil")}
+            alt="usuario"
+            width={20}
+            height={20}
+          />
+        </li>
+        <li onClick={() => aoClicarnoIcone("publicacao")}>
+          <Image
+            src={obterImagem("publicacao")}
+            alt="seguir"
+            width={20}
+            height={20}
+          />
+        </li>
       </ul>
     </nav>
   );

@@ -33,15 +33,20 @@ const Header = () => {
   const aoClicarResultadoPesquisa = (id: string) => {
     setTermoPesquisado('')
     setResultadoPesquisa([]);
-    
+
     router.push(`/perfil/${id}`);
 
   };
 
+  const redirecionarParaHome=()=>{
+    router.push('/')
+  }
+
+
   return (
     <header className="homeHeader">
       <div className="conteudoCabecalhoPrincipal">
-        <div className="logoHeaderPrincipal">
+        <div className="logoHeaderPrincipal" onClick={redirecionarParaHome}>
           <Image src={logoHorizontal} alt="Logo Principal" fill />
         </div>
 
