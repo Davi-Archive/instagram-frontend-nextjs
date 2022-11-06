@@ -11,7 +11,7 @@ import ApiUsuarioService from "../../services/ApiUsuarioService";
 
 const usuarioService = new ApiUsuarioService();
 
-const Login = () => {
+const Login = ({aposAutenticacao}:any) => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [estaSubmentendo, setEstaSubmentendo] = useState(false);
@@ -29,6 +29,11 @@ const Login = () => {
         senha
       }
       await usuarioService.login(usuarioLoginObject);
+
+      if(aposAutenticacao){
+        aposAutenticacao();
+      }
+
       toast.success('Logado com sucesso', { autoClose: 3000 });
     } catch (error) {
       console.log(error);

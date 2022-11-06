@@ -16,6 +16,6 @@ if(estaAutenticado){
   return <Home />
 }
   return (
-    <Login />
+    <Login aposAutenticacao={()=>setEstaAutenticado(true)} />
   );
 }

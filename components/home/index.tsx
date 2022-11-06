@@ -1,4 +1,4 @@
-import React from 'react'
+import comAutorizacao from "../../hoc/comAutorizacao";
 
 const Home = () => {
   return (
@@ -6,4 +6,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default comAutorizacao(Home);

@@ -14,6 +14,7 @@ import {
 } from "../../utils/validadores";
 import ApiUsuarioService from "../../services/ApiUsuarioService"
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const usuarioService = new ApiUsuarioService();
 
@@ -24,6 +25,7 @@ const Cadastro = () => {
   const [senhaConfirma, setSenhaConfirma] = useState("");
   const [imagem, setImagem] = useState(null);
   const [estaSubmentendo, setEstaSubmentendo] = useState(false);
+  const router = useRouter();
 
   const validarFormulario = () => {
     return (
@@ -52,6 +54,12 @@ const Cadastro = () => {
 
       const request = await usuarioService.cadastro(corpoRequisicaoCadastro);
       toast(request.data.msg, { autoClose: 3000, type: "success" });
+      await usuarioService.login({
+        login: email,
+        senha
+      })
+
+      router.push('/');
     } catch (error: Error | any) {
       console.log(error);
       toast(`Error ao cadastrar usuário. ${+error?.response?.data?.error}`, {
