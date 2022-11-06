@@ -16,6 +16,7 @@ import userBlue from "./userBlue.svg";
 import userGray from "./userGray.svg";
 import xCircle from "./xCircle.svg";
 import Camera from "./camera.svg";
+import logoHorizontal from "./logoHorizontal.svg";
 
 export {
   avatar,
@@ -36,4 +37,5 @@ export {
   userGray,
   xCircle,
   Camera,
+  logoHorizontal,
 };

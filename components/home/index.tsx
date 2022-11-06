@@ -1,6 +1,6 @@
 import comAutorizacao from "../../hoc/comAutorizacao";
 
-const Home = () => {
+export const Home = () => {
   return (
     <div>Home</div>
   )
