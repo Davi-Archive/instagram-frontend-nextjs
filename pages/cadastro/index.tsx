@@ -12,6 +12,10 @@ import {
   validarNome,
   validarSenha,
 } from "../../utils/validadores";
+import ApiUsuarioService from "../../services/ApiUsuarioService";
+import { toast } from "react-toastify";
+
+const usuarioService = new ApiUsuarioService();
 
 const Cadastro = () => {
   const [nome, setNome] = useState("");
@@ -19,6 +23,7 @@ const Cadastro = () => {
   const [senha, setSenha] = useState("");
   const [senhaConfirma, setSenhaConfirma] = useState("");
   const [imagem, setImagem] = useState(null);
+  const [estaSubmentendo, setEstaSubmentendo] = useState(false);
 
   const validarFormulario = () => {
     return (
@@ -29,6 +34,34 @@ const Cadastro = () => {
     );
   };
 
+  const onSubmit = async (e: Event | any) => {
+    setEstaSubmentendo(true);
+    e.preventDefault();
+    if (!validarFormulario()) return;
+
+    try {
+      const corpoRequisicaoCadastro = new FormData();
+      corpoRequisicaoCadastro.append("nome", nome);
+      corpoRequisicaoCadastro.append("email", email);
+      corpoRequisicaoCadastro.append("senha", senha);
+      //@ts-ignore
+      if (imagem?.arquivo) {
+        //@ts-ignore
+        corpoRequisicaoCadastro.append("file", imagem?.arquivo);
+      }
+
+      const request = await usuarioService.cadastro(corpoRequisicaoCadastro);
+      toast(request.data.msg, { autoClose: 3000, type: "success" });
+    } catch (error: Error | any) {
+      console.log(error);
+      toast(`Error ao cadastrar usuário. ${+error?.response?.data?.error}`, {
+        autoClose: 5000,
+        type: "warning",
+      });
+    }
+    setEstaSubmentendo(false);
+  };
+
   return (
     <section className={`paginaCadastro paginaPublica`}>
       <div className="logoContainer desktop">
@@ -36,7 +69,7 @@ const Cadastro = () => {
       </div>
 
       <div className={`conteudoPaginaPublica`}>
-        <form>
+        <form onSubmit={onSubmit}>
           <UploadImage
             imagemPreviewClassName="avatar avatarPreview"
             //@ts-ignore
@@ -87,7 +120,7 @@ const Cadastro = () => {
           <Button
             type="submit"
             text="Cadastrar"
-            isDisabled={!validarFormulario()}
+            isDisabled={!validarFormulario() || estaSubmentendo}
           />
         </form>
         <div className="rodapePaginaPublica">

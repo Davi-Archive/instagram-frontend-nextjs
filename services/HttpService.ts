@@ -2,8 +2,14 @@ import axios from 'axios';
 
 export default class HttpService {
     constructor() {
+        //@ts-ignore
         this.axios = axios.create({
-            baseURL: process.env.NEXT_PUBLIC_API_URL = '/api'
+            baseURL: process.env.NEXT_PUBLIC_API_URL + '/api'
         })
+    }
+    async post(url:any, data:any) {
+        //@ts-ignore
+       const res = await this.axios.post(url, data);
+       return res;
     }
 }
