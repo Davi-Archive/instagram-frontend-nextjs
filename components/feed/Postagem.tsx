@@ -10,8 +10,8 @@ import {
 
 const Postagem = ({ usuario, fotoDoPost,descricao,comentarios }: any) => {
   return (
-    <div>
-      <Link href={`/perfil/${usuario?.id}`}>
+    <div className="postagem">
+      <Link href={`/perfil/${usuario?.id}`} className="link">
         <section className="cabecalhoPostagem">
           <Avatar src={usuario.avatar} />
           <strong>{usuario.nome}</strong>
@@ -29,6 +29,7 @@ const Postagem = ({ usuario, fotoDoPost,descricao,comentarios }: any) => {
             width={20}
             height={20}
             onClick={() => console.log("curtir")}
+            style={{marginRight: '10px'}}
           />
 
           <Image
@@ -37,6 +38,7 @@ const Postagem = ({ usuario, fotoDoPost,descricao,comentarios }: any) => {
             width={20}
             height={20}
             onClick={() => console.log("comentar")}
+            style={{marginRight: '10px'}}
           />
           <span className="quantidadeCurtidas">
             Curtido por <strong>32 pessoas</strong>

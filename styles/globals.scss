@@ -83,6 +83,20 @@ strong {
   font-family: $fontBold;
 }
 
+body {
+  @media screen and (min-width: $desktopBreakpoint) {
+    background-color: $cinza05;
+    background-image: url("../public/image/bgFundo.svg");
+  }
+}
+
+.largura30pctDesktop {
+  @media screen and (min-width: $desktopBreakpoint) {
+    width: 30%;
+    margin: auto;
+  }
+}
+
 /* toastify css*/
 @import "react-toastify/dist/ReactToastify.css";
 
