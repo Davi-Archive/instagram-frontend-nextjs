@@ -6,6 +6,11 @@ const FazerComentario = ({usuarioLogado}:any) => {
     <div className='containerFazerComentario'>
         <Avatar src={usuarioLogado.avatar} />
         <textarea rows={2} placeholder='Adicione um comentário...'></textarea>
+      <button
+      type='button'
+      className='btnPublicacao desktop'
+      >Publicar</button>
+
     </div>
   )
 };

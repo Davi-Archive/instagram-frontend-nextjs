@@ -55,7 +55,7 @@ const Postagem = ({ usuario, fotoDoPost, descricao, comentarios,usuarioLogado }:
             width={20}
             height={20}
             onClick={() => console.log("curtir")}
-            style={{ marginRight: "10px" }}
+            style={{ marginRight: "10px", cursor: "pointer" }}
           />
 
           <Image
@@ -66,7 +66,7 @@ const Postagem = ({ usuario, fotoDoPost, descricao, comentarios,usuarioLogado }:
             onClick={() =>
               setDeveExibirSecaoParaComentar(!deveExibirSecaoParaComentar)
             }
-            style={{ marginRight: "10px" }}
+            style={{ marginRight: "10px", cursor: "pointer" }}
           />
           <span className="quantidadeCurtidas">
             Curtido por <strong>32 pessoas</strong>

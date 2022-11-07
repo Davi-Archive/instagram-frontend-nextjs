@@ -54,20 +54,24 @@
         display: flex;
         align-items: center;
         margin-bottom: 6px;
-        > img {
-          margin-right: 12px !important;
-        }
+        .acoesDoRodapeDaPostagem{
+          > img {
+            cursor: pointer !important;
+            margin-right: 12px !important;
+          }
 
-        .quantidadeCurtidas {
-          font-family: $fontLight;
-          font-size: 10px;
-          color: $cinza04;
-
-          strong {
+          .quantidadeCurtidas {
+            font-family: $fontLight;
             font-size: 10px;
             color: $cinza04;
+
+            strong {
+              font-size: 10px;
+              color: $cinza04;
+            }
           }
         }
+
       }
     }
 
@@ -78,9 +82,9 @@
       align-items: center;
       margin-bottom: 16px;
 
-      textarea{
+      textarea {
         resize: none;
-        flex:0.93;
+        flex: 0.93;
         max-width: 90%;
         border: none;
         outline: none;
@@ -91,5 +95,24 @@
   }
   @media screen and (min-width: $desktopBreakpoint) {
     padding-top: 8px;
+
+    .postagem {
+      .avatar {
+        width: 42px;
+        height: 42px;
+      }
+      .containerFazerComentario {
+        margin-top: 12px;
+        .btnPublicacao {
+          background-color: transparent;
+          color: $corPrimaria02;
+          outline: none;
+          border: none;
+          font-size: 12px;
+          font-family: $fontBold;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
