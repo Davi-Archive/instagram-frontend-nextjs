@@ -1,12 +1,19 @@
 .cabecalhoComAcoes {
   display: flex;
-  border-bottom: 0.5px solid $cinza01;
-    padding: 0 20px 0;
+  /* border-bottom: 0.5px solid $cinza00; */
+  padding: 0 20px 0;
+  background-color: $white;
+  align-items: center;
 
   h3 {
     font-family: $fontBold;
     font-size: 16px;
     text-align: center;
     flex: 1;
+  }
+  @media screen and (min-width:$desktopBreakpoint) {
+    h3{
+      font-size: 18px;
+    }
   }
 }

@@ -11,13 +11,15 @@ const HeaderComAcoes = ({
   return (
     <div className={`cabecalhoComAcoes ${className}`}>
       {iconeEsquerda ? (
-        <Image
-          src={iconeEsquerda}
-          onClick={aoClicarAcaoEsquerda}
-          alt="icone esquerda cabecalho ações"
-          width={25}
-          height={25}
-        />
+        <div className="setaEsquerda">
+          <Image
+            src={iconeEsquerda}
+            onClick={aoClicarAcaoEsquerda}
+            alt="icone esquerda cabecalho ações"
+            width={25}
+            height={25}
+          />
+        </div>
       ) : (
         textoEsquerda !== null && (
           <div className="cabecalhoComAcoesTextoEsquerda">{textoEsquerda}</div>

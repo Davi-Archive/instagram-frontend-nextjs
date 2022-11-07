@@ -1,9 +1,17 @@
 .paginaPerfil {
   .cabecalhoPerfil {
+    hr {
+      margin: 0 auto;
+      background-color: $cinza00;
+      border: none;
+      height: 1px;
+      width: 95%;
+    }
     .statusPerfil {
       display: flex;
       align-items: center;
       padding: 16px 16px 24px;
+      background-color: $white;
 
       .avatar {
         height: 80px;
@@ -36,6 +44,24 @@
             span {
               font-size: 12px;
             }
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width: $desktopBreakpoint) {
+      .setaEsquerda {
+        display: none;
+      }
+
+      .statusPerfil {
+        .avatar {
+          width: 90px;
+          height: 90px;
+        }
+        .informacoesPerfil {
+          .btn {
+            padding: 8px;
           }
         }
       }

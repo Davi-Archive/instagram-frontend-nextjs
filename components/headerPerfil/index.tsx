@@ -7,8 +7,10 @@ import Button from "../button";
 const HeaderPerfil = ({ usuarioLogado, usuario }: any) => {
   return (
     <>
-      <div className="cabecalhoPerfil">
+      <div className="cabecalhoPerfil largura30pctDesktop">
         <HeaderComAcoes iconeEsquerda={leftArrow} titulo={usuario.nome} />
+
+        <hr />
 
         <div className="statusPerfil">
           <Avatar src={usuario.avatar} />
