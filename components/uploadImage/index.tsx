@@ -19,14 +19,16 @@ export default function UploadImagem({
   }, [referenciaInput?.current]);
 
   const abrirSeletorArquivos = () => {
+    //@ts-ignore
     referenciaInput?.current?.click();
   };
 
   const aoAleterarImagem = () => {
+    //@ts-ignore
     if (!referenciaInput?.current?.files?.length) {
       return;
     }
-
+    //@ts-ignore
     const arquivo = referenciaInput?.current?.files[0];
     obterUrlDaImagemEAtualizarEstado(arquivo);
   };

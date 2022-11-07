@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-const Footer = () => {
+const Footer = ({usuarioLogado}:any) => {
   return (
     <footer className="rodape mobile">
       <Navbar />

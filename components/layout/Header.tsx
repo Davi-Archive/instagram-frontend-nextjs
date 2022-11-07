@@ -9,39 +9,36 @@ import ResultadoPesquisa from "./ResultadoPesquisa";
 
 const usuarioService = new ApiUsuarioService();
 
-const Header = () => {
+const Header = ({ usuarioLogado }:any) => {
   const [resultadoPesquisa, setResultadoPesquisa] = useState<any>([]);
   const [termoPesquisado, setTermoPesquisado] = useState<any>("");
 
   const router = useRouter();
 
   const aoPesquisar = async (e: any) => {
-     setTermoPesquisado(e.target.value);
-     setResultadoPesquisa([]);
+    setTermoPesquisado(e.target.value);
+    setResultadoPesquisa([]);
 
-     if (e.target.value.length < 3) return;
-
+    if (e.target.value.length < 3) return;
 
     try {
-      const {data} = await usuarioService.pesquisa(termoPesquisado);
-      setResultadoPesquisa(data)
+      const { data } = await usuarioService.pesquisa(termoPesquisado);
+      setResultadoPesquisa(data);
     } catch (error) {
-      toast.error('Erro ao pesquisar.')
+      toast.error("Erro ao pesquisar.");
     }
-  }
+  };
 
   const aoClicarResultadoPesquisa = (id: string) => {
-    setTermoPesquisado('')
+    setTermoPesquisado("");
     setResultadoPesquisa([]);
 
     router.push(`/perfil/${id}`);
-
   };
 
-  const redirecionarParaHome=()=>{
-    router.push('/')
-  }
-
+  const redirecionarParaHome = () => {
+    router.push("/");
+  };
 
   return (
     <header className="homeHeader">
@@ -65,7 +62,7 @@ const Header = () => {
       </div>
       {resultadoPesquisa.length > 0 && (
         <div className="resultadoPesquisaContainer">
-          {resultadoPesquisa.map((r: any,index:number) => (
+          {resultadoPesquisa.map((r: any, index: number) => (
             <ResultadoPesquisa
               avatar={r.avatar}
               nome={r.nome}
