@@ -11,10 +11,9 @@ const HeaderComAcoes = ({
   return (
     <div className={`cabecalhoComAcoes ${className}`}>
       {iconeEsquerda ? (
-        <div className="setaEsquerda">
+        <div className="setaEsquerda" onClick={aoClicarAcaoEsquerda}>
           <Image
             src={iconeEsquerda}
-            onClick={aoClicarAcaoEsquerda}
             alt="icone esquerda cabecalho ações"
             width={25}
             height={25}

@@ -5,38 +5,43 @@ import Postagem from "./Postagem";
 
 const feedService = new FeedService();
 
-const Feed = ({ usuarioLogado }: any) => {
+const Feed = ({ usuarioLogado, idUsuario }: any) => {
   const [listaDePostagens, setListaDePostagens] = useState<any>([]);
-
-  const getFeed = async () =>{
-    const { data } = await feedService.carregarPostagem();
-      console.log(data.result);
-    const postagensFormatadas = data.result.map((postagem: any) =>(
-      {
-        id: postagem._id,
-        usuario: {
-          id: postagem.userId,
-          nome: postagem.usuario.nome,
-          avatar: postagem.usuario.avatar
-        },
-        fotoDoPost: postagem.foto,
-        descricao: postagem.descricao,
-        curtidas: postagem.likes,
-        comentarios: postagem.comentarios.map((c:any)=>({
-          nome: c.nome,
-          mensagem: c.comentario
-        }))
-      }
-    ));
-    console.log(postagensFormatadas);
+  const getFeed = async (idUsuario:any) =>{
+    let data;
+    let retrievedData;
+    if(!idUsuario){
+      data = await feedService.carregarPostagem()
+      retrievedData = data.data.result;
+    }else{
+      data = await feedService.carregarPostagem(idUsuario);
+      retrievedData = data.data;
+    }
+    console.log(retrievedData)
+    let postagensFormatadas = retrievedData.map((postagem: any) => ({
+      id: postagem._id,
+      usuario: {
+        id: postagem.idUsuario,
+        nome: postagem?.usuario?.nome || postagem?.usuarioNome,
+        avatar: postagem?.usuario?.avatar || postagem?.avatar,
+      },
+      fotoDoPost: postagem.foto,
+      descricao: postagem.descricao,
+      curtidas: postagem.likes,
+      comentarios: postagem.comentarios.map((c: any) => ({
+        nome: c.nome,
+        mensagem: c.comentario,
+      })),
+    }));
+    //console.log(postagensFormatadas);
     setListaDePostagens(postagensFormatadas);
 
   }
 
   useEffect(() => {
-    getFeed();
+    getFeed(idUsuario);
     console.log("carregar o feed");
-  }, [usuarioLogado]);
+  }, [usuarioLogado, idUsuario]);
 
 
   return (
