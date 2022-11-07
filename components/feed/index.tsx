@@ -66,7 +66,7 @@ const Feed = ({ usuarioLogado }: any) => {
   return (
     <div className="feedContainer largura30pctDesktop">
       {listaDePostagens.map((dadosPostagem: any, index: number) => (
-        <Postagem {...dadosPostagem} key={index} />
+        <Postagem {...dadosPostagem} key={index} usuarioLogado={usuarioLogado} />
       ))}
     </div>
   );
