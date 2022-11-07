@@ -5,7 +5,8 @@ const HeaderComAcoes = ({
   iconeEsquerda,
   textoEsquerda,
   aoClicarAcaoEsquerda,
-  titulo
+  titulo,
+  elementoDireita,
 }: any) => {
   return (
     <div className={`cabecalhoComAcoes ${className}`}>
@@ -23,6 +24,7 @@ const HeaderComAcoes = ({
         )
       )}
       <h3>{titulo}</h3>
+      {elementoDireita && <button type="button">{elementoDireita}</button>}
     </div>
   );
 };
