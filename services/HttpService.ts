@@ -26,7 +26,7 @@ export default class HttpService {
         //@ts-ignore
         return await this.axios.get(url)
     }
-    async put(url:any,data:any){
+    async put(url:any,data?:any){
         //@ts-ignore
         return await this.axios.put(url, data)
     }

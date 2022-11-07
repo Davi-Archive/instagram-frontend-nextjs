@@ -22,8 +22,9 @@ const Postagem = ({
   descricao,
   comentarios,
   usuarioLogado,
-  curtidas
+  curtidas,
 }: any) => {
+  const [curtidasPostagem, setCurtidasPostagem] = useState<any>([]);
   const [deveExibirSecaoParaComentar, setDeveExibirSecaoParaComentar] =
     useState(false);
   const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
@@ -56,16 +57,45 @@ const Postagem = ({
         ...comentariosPostagem,
         {
           nome: usuarioLogado.nome,
-          mensagem: comentario
-        }
-      ])
-      toast.success(data.msg, { autoClose: 3000 });
+          mensagem: comentario,
+        },
+      ]);
     } catch (error) {
       console.log(error);
       toast.error("Erro ao comentar", { autoClose: 2000 });
     }
     return Promise.resolve(true);
   };
+
+  const usuarioLogadoCurtiuPostagem = () => {
+    return curtidasPostagem.includes(usuarioLogado?.id);
+  };
+
+  const alterarCurtida = async (id: any) => {
+    try {
+      const { data } = await feedService.alterarCurtida(id);
+      setCurtidasPostagem(data);
+
+      if (usuarioLogadoCurtiuPostagem()) {
+        console.log("descurtir");
+
+        //tiro da lista
+        setCurtidasPostagem(
+          curtidasPostagem.filter((i: any) => i !== usuarioLogado.id)
+        );
+      } else {
+        //adiciona usuario logado
+        console.log("curtir");
+        setCurtidasPostagem([...curtidasPostagem, usuarioLogado.id]);
+      }
+    } catch (error) {
+      toast.error("Erro ao curtir", { autoClose: 2000 });
+    }
+  };
+
+  const obterImagemCurtida = () =>{
+    return usuarioLogadoCurtiuPostagem() ? imgCurtido : imgCurtir
+  }
 
   return (
     <div className="postagem">
@@ -82,11 +112,11 @@ const Postagem = ({
       <div className="rodapeDaPostagem">
         <div className="acoesDoRodapeDaPostagem">
           <Image
-            src={imgCurtir}
+            src={obterImagemCurtida()}
             alt="icone curtir"
             width={20}
             height={20}
-            onClick={() => console.log("curtir")}
+            onClick={() => alterarCurtida(id)}
             style={{ marginRight: "10px", cursor: "pointer" }}
           />
 
@@ -105,7 +135,7 @@ const Postagem = ({
             style={{ marginRight: "10px", cursor: "pointer" }}
           />
           <span className="quantidadeCurtidas">
-            Curtido por <strong>{curtidas.length}</strong>
+            Curtido por <strong>{curtidasPostagem.length}</strong>
           </span>
         </div>
 

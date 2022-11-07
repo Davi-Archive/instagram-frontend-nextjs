@@ -13,4 +13,8 @@ export default class FeedService extends HttpService {
      return await this.put(`/comments?id=${idPostagem}`,{comentario})
   }
 
+  async alterarCurtida(idPostagem:any){
+    return this.put(`/like?id=${idPostagem}`);
+  }
+
 }
