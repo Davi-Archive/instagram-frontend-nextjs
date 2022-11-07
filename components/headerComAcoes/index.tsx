@@ -15,8 +15,8 @@ const HeaderComAcoes = ({
           src={iconeEsquerda}
           onClick={aoClicarAcaoEsquerda}
           alt="icone esquerda cabecalho ações"
-          width={20}
-          height={20}
+          width={25}
+          height={25}
         />
       ) : (
         textoEsquerda !== null && (
