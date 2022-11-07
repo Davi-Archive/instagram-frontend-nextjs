@@ -33,6 +33,18 @@
 
     .rodapeDaPostagem {
       padding: 5px 16px;
+      .comentariosDaPublicacao {
+        margin-top: 8px;
+
+        .comentario {
+          p{
+            margin: 4px 0;
+          }
+          strong{
+            margin-right: 6px;
+          }
+        }
+      }
       strong.nomeUsuario {
         font-size: 12px;
         float: left;
@@ -54,7 +66,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 6px;
-        .acoesDoRodapeDaPostagem{
+        .acoesDoRodapeDaPostagem {
           > img {
             cursor: pointer !important;
             margin-right: 12px !important;
@@ -71,7 +83,6 @@
             }
           }
         }
-
       }
     }
 

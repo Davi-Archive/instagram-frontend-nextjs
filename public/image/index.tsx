@@ -17,8 +17,10 @@ import userGray from "./userGray.svg";
 import xCircle from "./xCircle.svg";
 import Camera from "./camera.svg";
 import logoHorizontal from "./logoHorizontal.svg";
+import commentActive from './commentActive.svg'
 
 export {
+  commentActive,
   avatar,
   comment,
   envelope,

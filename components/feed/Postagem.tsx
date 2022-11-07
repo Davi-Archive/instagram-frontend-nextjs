@@ -6,16 +6,30 @@ import {
   heartFilled as imgCurtido,
   heartOutlined as imgCurtir,
   comment as imgComentarioCinza,
+  commentActive as imgComentarioAtivo,
 } from "../../public/image";
 import FazerComentario from "./FazerComentario";
+import { toast } from "react-toastify";
+import FeedService from "../../services/FeedService";
 
+const feedService = new FeedService();
 const tamanhoLimiteDescricao = 90;
 
-const Postagem = ({ usuario, fotoDoPost, descricao, comentarios,usuarioLogado }: any) => {
- const [deveExibirSecaoParaComentar, setDeveExibirSecaoParaComentar] = useState(false)
+const Postagem = ({
+  id,
+  usuario,
+  fotoDoPost,
+  descricao,
+  comentarios,
+  usuarioLogado,
+  curtidas
+}: any) => {
+  const [deveExibirSecaoParaComentar, setDeveExibirSecaoParaComentar] =
+    useState(false);
   const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(
     tamanhoLimiteDescricao
   );
+  const [comentariosPostagem, setComentariosPostagem] = useState(comentarios);
 
   const descricaoMaiorQueLimite = () => {
     return descricao.length > tamanhoAtualDaDescricao;
@@ -33,6 +47,24 @@ const Postagem = ({ usuario, fotoDoPost, descricao, comentarios,usuarioLogado }:
 
   const exibirDescricaoCompleta = () => {
     setTamanhoAtualDaDescricao(Number.MAX_SAFE_INTEGER);
+  };
+
+  const comentar = async (comentario: any) => {
+    try {
+      const { data } = await feedService.adicionarComentario(id, comentario);
+      setComentariosPostagem([
+        ...comentariosPostagem,
+        {
+          nome: usuarioLogado.nome,
+          mensagem: comentario
+        }
+      ])
+      toast.success(data.msg, { autoClose: 3000 });
+    } catch (error) {
+      console.log(error);
+      toast.error("Erro ao comentar", { autoClose: 2000 });
+    }
+    return Promise.resolve(true);
   };
 
   return (
@@ -59,7 +91,11 @@ const Postagem = ({ usuario, fotoDoPost, descricao, comentarios,usuarioLogado }:
           />
 
           <Image
-            src={imgComentarioCinza}
+            src={
+              deveExibirSecaoParaComentar
+                ? imgComentarioAtivo
+                : imgComentarioCinza
+            }
             alt="icone curtir"
             width={20}
             height={20}
@@ -69,7 +105,7 @@ const Postagem = ({ usuario, fotoDoPost, descricao, comentarios,usuarioLogado }:
             style={{ marginRight: "10px", cursor: "pointer" }}
           />
           <span className="quantidadeCurtidas">
-            Curtido por <strong>32 pessoas</strong>
+            Curtido por <strong>{curtidas.length}</strong>
           </span>
         </div>
 
@@ -88,17 +124,19 @@ const Postagem = ({ usuario, fotoDoPost, descricao, comentarios,usuarioLogado }:
           </p>
         </div>
         <div className="comentariosDaPublicacao">
-          {comentarios.map((c: any, i: any) => (
+          {comentariosPostagem.map((c: any, i: any) => (
             <div className="comentario" key={i}>
-              <strong>{c.nome}</strong>
-              <p>{c.mensagem}</p>
+              <p>
+                <strong>{c.nome}</strong>
+                {c.mensagem}
+              </p>
             </div>
           ))}
         </div>
       </div>
 
       {deveExibirSecaoParaComentar && (
-        <FazerComentario usuarioLogado={usuarioLogado} />
+        <FazerComentario comentar={comentar} usuarioLogado={usuarioLogado} />
       )}
     </div>
   );

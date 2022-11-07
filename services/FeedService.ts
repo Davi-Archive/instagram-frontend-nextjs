@@ -8,4 +8,9 @@ export default class FeedService extends HttpService {
     }
     return await this.get(url);
   }
+
+  async adicionarComentario(idPostagem:any,comentario:any){
+     return await this.put(`/comments?id=${idPostagem}`,{comentario})
+  }
+
 }

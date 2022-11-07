@@ -21,10 +21,10 @@ const Feed = ({ usuarioLogado }: any) => {
         },
         fotoDoPost: postagem.foto,
         descricao: postagem.descricao,
-        curtidas: postagem.like,
+        curtidas: postagem.likes,
         comentarios: postagem.comentarios.map((c:any)=>({
           nome: c.nome,
-          comentario: c.comentario
+          mensagem: c.comentario
         }))
       }
     ));
