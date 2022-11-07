@@ -9,11 +9,16 @@ import ResultadoPesquisa from "./ResultadoPesquisa";
 
 const usuarioService = new ApiUsuarioService();
 
-const Header = ({ usuarioLogado }:any) => {
+const Header = ({ usuarioLogado }: any) => {
   const [resultadoPesquisa, setResultadoPesquisa] = useState<any>([]);
   const [termoPesquisado, setTermoPesquisado] = useState<any>("");
 
   const router = useRouter();
+
+  let cabecalhoClassName = "";
+  if (window && window.location.pathname !== "/") {
+    cabecalhoClassName = 'desktop'
+  }
 
   const aoPesquisar = async (e: any) => {
     setTermoPesquisado(e.target.value);
@@ -41,7 +46,7 @@ const Header = ({ usuarioLogado }:any) => {
   };
 
   return (
-    <header className="homeHeader">
+    <header className={`homeHeader ${cabecalhoClassName}`}>
       <div className="conteudoCabecalhoPrincipal">
         <div className="logoHeaderPrincipal" onClick={redirecionarParaHome}>
           <Image src={logoHorizontal} alt="Logo Principal" fill />
