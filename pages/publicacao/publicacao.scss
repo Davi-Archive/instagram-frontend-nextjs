@@ -1,0 +1,60 @@
+.paginaPublicacao {
+  background-color: $white;
+  height: 100%;
+
+  .conteudoPaginaPublicacao {
+    .primeiraEtapa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      .uploadImagemContainer {
+        .imagemPreviewContainer {
+          text-align: center;
+          margin: 30px auto;
+          height: 150px;
+          width: 150px;
+          .previewImagemPublicacao {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      .btn {
+        background-color: $corPrimaria03;
+        color: $white;
+        width: 70%;
+        margin: auto;
+        padding: 12px;
+        &:hover{
+            border: none;
+            opacity: 0.8;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: $desktopBreakpoint) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .conteudoPaginaPublicacao {
+      .primeiraEtapa {
+        .uploadImagemContainer {
+          .imagemPreviewContainer {
+            margin-bottom: 20px;
+          }
+        }
+
+        .textoDragAndDrop {
+          text-align: center;
+          color: $cinza04;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}

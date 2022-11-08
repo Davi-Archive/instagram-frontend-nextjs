@@ -7,7 +7,7 @@ import comAutorizacao from "../../hoc/comAutorizacao";
 import { createPost } from "../../public/image";
 
 const Publicacao = () => {
-  const [imagem, setImagem] = useState();
+  const [imagem, setImagem] = useState(true);
   const [inputImagem, setInputImagem] = useState();
   return (
     <>
@@ -17,25 +17,30 @@ const Publicacao = () => {
           elementoDireita="Avançar"
           titulo="Nova Publicacao"
         />
-      </div>
-      <div className="conteudoPaginaPublicacao largura30pctDesktop">
-        <div className="primeiraEtapa">
-          <UploadImagem
-            setImagem={setImagem}
-            aoSetarAReferencia={setInputImagem}
-            imagemPreviewClassName={imagem ? "previewImagemPublicacao" : ""}
-            //@ts-ignore -- typescript has no access to dom
-            imagemPreview={imagem?.preview || createPost.src}
-          />
 
-          <span className="desktop textoDragAndDrop">Arraste sua foto aqui!</span>
+        <hr className="linhaDivisoria" />
 
+        <div className="conteudoPaginaPublicacao">
+          <div className="primeiraEtapa">
+            <UploadImagem
+              setImagem={setImagem}
+              aoSetarAReferencia={setInputImagem}
+              imagemPreviewClassName={!imagem ? "previewImagemPublicacao" : "previewImagemSelecionada"}
+              //@ts-ignore -- typescript has no access to dom
+              imagemPreview={imagem?.preview || createPost.src}
+            />
 
-          <Button
-            type="button"
-            text="Selecionar Imagem"
-            onClick={() => console.log("manipular clique")}
-          />
+            <span className="desktop textoDragAndDrop">
+              Arraste sua foto aqui!
+            </span>
+
+            <Button
+              type="button"
+              text="Selecionar Imagem"
+              //@ts-ignore -- use ref other component
+              onClick={() => inputImagem.click()}
+            />
+          </div>
         </div>
       </div>
     </>
