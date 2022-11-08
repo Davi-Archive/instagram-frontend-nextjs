@@ -48,4 +48,12 @@ export default class ApiUsuarioService extends HttpService {
             avatar: localStorage.getItem('avatar')
         }
     }
+
+    logout(){
+        localStorage.removeItem('name')
+        localStorage.removeItem('email')
+        localStorage.removeItem('token')
+        localStorage.removeItem('id')
+        localStorage.removeItem('avatar')
+    }
 }

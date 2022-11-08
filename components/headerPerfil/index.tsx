@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+
 import HeaderComAcoes from "../headerComAcoes";
-import { leftArrow } from "../../public/image";
+import { leftArrow, logout } from "../../public/image";
 import Avatar from "../avatar";
 import Button from "../button";
-import { toast } from "react-toastify";
 import ApiUsuarioService from "../../services/ApiUsuarioService";
-import { useRouter } from "next/router";
 
 const usuarioService = new ApiUsuarioService();
 
@@ -62,6 +64,26 @@ const HeaderPerfil = ({ usuarioLogado, usuario, estaNoPerfilPessoal }: any) => {
     router.back();
   };
 
+  const logoutHandle = () => {
+    usuarioService.logout();
+    router.replace("/");
+  };
+
+  const obterElementoDireitaCabecalho = () => {
+    if (estaNoPerfilPessoal) {
+      return (
+        <Image
+          src={logout}
+          alt="Botao deslogar"
+          onClick={logoutHandle}
+          width={25}
+          height={25}
+        />
+      );
+    }
+    return null;
+  };
+
   return (
     <>
       <div className="cabecalhoPerfil largura30pctDesktop">
@@ -69,6 +91,8 @@ const HeaderPerfil = ({ usuarioLogado, usuario, estaNoPerfilPessoal }: any) => {
           iconeEsquerda={estaNoPerfilPessoal ? null : leftArrow}
           titulo={usuario.nome}
           aoClicarAcaoEsquerda={aoClicarSetaEsquerda}
+          elementoDireita={obterElementoDireitaCabecalho()}
+          logoutHandle={logoutHandle}
         />
 
         <hr />
