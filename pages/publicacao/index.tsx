@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -6,7 +5,7 @@ import Button from "../../components/button";
 import HeaderComAcoes from "../../components/headerComAcoes";
 import UploadImagem from "../../components/uploadImage";
 import comAutorizacao from "../../hoc/comAutorizacao";
-import { createPost, avatar, leftArrow } from "../../public/image";
+import { avatar, leftArrow } from "../../public/image";
 import FeedService from "../../services/FeedService";
 
 const limiteDaDescricao = 255;
@@ -82,7 +81,7 @@ function Publicacao() {
   const publicar = async () => {
     try {
       if (!validarFormulario()) {
-        alert(
+        toast.error(
           "A descrição precisa de pelo menos 3 caracteres e a imagem precisa estar selecionada."
         );
         return;
@@ -94,10 +93,10 @@ function Publicacao() {
       corpoPublicacao.append("file", imagem?.arquivo);
 
       await feedService.fazerPublicacao(corpoPublicacao);
-      toast.success('Postagem publicada com sucesso!')
+      toast.success("Postagem publicada com sucesso!");
       router.push("/");
     } catch (error) {
-      alert("Erro ao salvar publicação!");
+      toast.error("Erro ao salvar publicação!");
     }
   };
 
