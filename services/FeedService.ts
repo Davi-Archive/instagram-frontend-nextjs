@@ -17,4 +17,8 @@ export default class FeedService extends HttpService {
     return this.put(`/like?id=${idPostagem}`);
   }
 
+  async fazerPublicacao(dadosPublicacao:any) {
+    return this.post('/publicacao', dadosPublicacao);
+  }
+
 }

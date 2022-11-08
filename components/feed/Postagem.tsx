@@ -24,7 +24,7 @@ const Postagem = ({
   usuarioLogado,
   curtidas,
 }: any) => {
-  const [curtidasPostagem, setCurtidasPostagem] = useState<any>([]);
+  const [curtidasPostagem, setCurtidasPostagem] = useState<any>(curtidas);
   const [deveExibirSecaoParaComentar, setDeveExibirSecaoParaComentar] =
     useState(false);
   const [tamanhoAtualDaDescricao, setTamanhoAtualDaDescricao] = useState(

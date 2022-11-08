@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import Button from "../../components/button";
 import HeaderComAcoes from "../../components/headerComAcoes";
 import UploadImagem from "../../components/uploadImage";
@@ -44,6 +45,7 @@ function Publicacao() {
   const aoClicarAcaoEsquerdaCabecalho = () => {
     if (estaNaEtapaUm()) {
       inputImagem.value = null;
+      //@ts-ignore
       setImagem(null);
       return;
     }
@@ -88,9 +90,11 @@ function Publicacao() {
 
       const corpoPublicacao = new FormData();
       corpoPublicacao.append("descricao", descricao);
-      corpoPublicacao.append("file", imagem.arquivo);
+      //@ts-ignore
+      corpoPublicacao.append("file", imagem?.arquivo);
 
       await feedService.fazerPublicacao(corpoPublicacao);
+      toast.success('Postagem publicada com sucesso!')
       router.push("/");
     } catch (error) {
       alert("Erro ao salvar publicação!");
@@ -98,6 +102,7 @@ function Publicacao() {
   };
 
   const validarFormulario = () => {
+    //@ts-ignore
     return descricao.length >= descricaoMinima && imagem?.arquivo;
   };
 
@@ -124,6 +129,7 @@ function Publicacao() {
               imagemPreviewClassName={
                 !imagem ? "previewImagemPublicacao" : "previewImagemSelecionada"
               }
+              //@ts-ignore
               imagemPreview={imagem?.preview || avatar.src}
             />
 
@@ -142,6 +148,7 @@ function Publicacao() {
             <div className="segundaEtapa">
               <UploadImagem
                 setImagem={setImagem}
+                //@ts-ignore
                 imagemPreview={imagem?.preview}
               />
 

@@ -1,85 +1,120 @@
 .paginaPublicacao {
-  background-color: $white;
-  height: 100%;
+    background-color: $white;
 
-  .conteudoPaginaPublicacao {
-    .primeiraEtapa {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
+    .cabecalhoComAcoes {
+        &.segundaEtapa {
+            > span {
+                cursor: pointer;
+            }
 
-      .uploadImagemContainer {
-        .imagemPreviewContainer {
-          text-align: center;
-          margin: 30px auto;
-          height: 150px;
-          width: 150px;
-          .previewImagemPublicacao {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
+            h3 {
+                padding-left: 17%;
+            }
         }
-      }
-      .btn {
-        background-color: $corPrimaria03;
-        color: $white;
-        width: 70%;
-        margin: auto;
-        padding: 12px;
-        &:hover {
-          border: none;
-          opacity: 0.8;
-        }
-      }
     }
-
-    .segundaEtapa {
-      display: flex;
-      .uploadImagemContainer {
-        .imagemPreviewContainer {
-          width: 80px;
-          height: 80px;
-
-          img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-          }
-        }
-      }
-      textarea {
-        border: none;
-        outline: none;
-        resize: none;
-        font-size: 12px;
-        font-family: $fontLight;
-        flex: 1;
-        color: $cinza02;
-      }
-    }
-  }
-  @media screen and (min-width: $desktopBreakpoint) {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 
     .conteudoPaginaPublicacao {
-      .primeiraEtapa {
-        .uploadImagemContainer {
-          .imagemPreviewContainer {
-            margin-bottom: 20px;
-          }
+        .primeiraEtapa {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .uploadImagemContainer {
+                text-align: center;
+
+                .imagemPreviewContainer {
+                    margin: 30px auto;
+
+                    img {
+                        object-fit: cover;
+                    }
+
+                    .previewImagemPublicacao {
+                        height: 150px;
+                        width: 150px;
+                    }
+
+                    .previewImagemSelecionada {
+                        height: 250px;
+                        width: 250px;
+                    }
+                }
+            }
+
+            .btn {
+                background-color: $corPrimaria03;
+                color: $white;
+                width: 70%;
+                margin: auto;
+                padding: 12px;
+
+                &:hover {
+                    border: none;
+                    opacity: 0.8;
+                }
+            }
         }
 
-        .textoDragAndDrop {
-          text-align: center;
-          color: $cinza04;
-          margin-bottom: 30px;
+        .segundaEtapa {
+            display: flex;
+            padding: 16px;
+
+            .uploadImagemContainer {
+                .imagemPreviewContainer {
+                    width: 80px;
+                    height: 80px;
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            textarea {
+                border: none;
+                outline: none;
+                resize: none;
+                margin-left: 16px;
+                font-size: 12px;
+                font-family: $fontLight;
+                flex: 1;
+                color: $cinza02;
+            }
         }
-      }
     }
-  }
+
+    @media screen and (min-width: $desktopBreakpoint) {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .conteudoPaginaPublicacao {
+            .primeiraEtapa {
+                cursor: pointer;
+
+                .uploadImagemContainer {
+                    .imagemPreviewContainer {
+                        margin-bottom: 20px;
+                    }
+                }
+
+                .textoDragAndDrop {
+                    text-align: center;
+                    color: $cinza04;
+                    margin-bottom: 30px;
+                }
+            }
+
+            .segundaEtapa {
+                .uploadImagemContainer {
+                    .imagemPreviewContainer {
+                        width: 160px;
+                        height: 160px;
+                    }
+                }
+            }
+        }
+    }
 }
