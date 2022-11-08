@@ -18,6 +18,7 @@ import xCircle from "./xCircle.svg";
 import Camera from "./camera.svg";
 import logoHorizontal from "./logoHorizontal.svg";
 import commentActive from './commentActive.svg'
+import createPost from './createPost.svg'
 
 export {
   commentActive,
@@ -40,4 +41,5 @@ export {
   xCircle,
   Camera,
   logoHorizontal,
+  createPost,
 };
