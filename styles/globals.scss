@@ -79,6 +79,14 @@ input {
   }
 }
 
+.linhaDivisoria {
+      margin: 0 auto;
+      background-color: $cinza00;
+      border: none;
+      height: 1px;
+      width: 95%;
+    }
+
 strong {
   font-family: $fontBold;
 }

@@ -8,6 +8,7 @@ const HeaderComAcoes = ({
   titulo,
   elementoDireita,
   logoutHandle,
+  aoClicarElementoDireita,
 }: any) => {
   return (
     <div className={`cabecalhoComAcoes ${className}`}>
@@ -22,12 +23,21 @@ const HeaderComAcoes = ({
         </div>
       ) : (
         textoEsquerda !== null && (
-          <div className="cabecalhoComAcoesTextoEsquerda">{textoEsquerda}</div>
+          <div
+            onClick={aoClicarAcaoEsquerda}
+            className="cabecalhoComAcoesTextoEsquerda"
+          >
+            {textoEsquerda}
+          </div>
         )
       )}
       <h3>{titulo}</h3>
       {elementoDireita && (
-        <button type="button" className="btnAcaoDireita" onClick={logoutHandle}>
+        <button
+          type="button"
+          className="btnAcaoDireita"
+          onClick={logoutHandle ? logoutHandle : aoClicarElementoDireita}
+        >
           {elementoDireita}
         </button>
       )}

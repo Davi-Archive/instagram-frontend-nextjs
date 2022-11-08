@@ -95,7 +95,7 @@ const HeaderPerfil = ({ usuarioLogado, usuario, estaNoPerfilPessoal }: any) => {
           logoutHandle={logoutHandle}
         />
 
-        <hr />
+        <hr className="linhaDivisoria"/>
 
         <div className="statusPerfil">
           <Avatar src={usuario.avatar} />

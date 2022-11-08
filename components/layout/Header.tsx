@@ -46,7 +46,7 @@ const Header = ({ usuarioLogado }: any) => {
   };
 
   return (
-    <header className={`homeHeader ${cabecalhoClassName}`}>
+    <div className={`homeHeader ${cabecalhoClassName}`}>
       <div className="conteudoCabecalhoPrincipal">
         <div className="logoHeaderPrincipal" onClick={redirecionarParaHome}>
           <Image src={logoHorizontal} alt="Logo Principal" fill />
@@ -79,7 +79,7 @@ const Header = ({ usuarioLogado }: any) => {
           ))}
         </div>
       )}
-    </header>
+    </div>
   );
 };
 
