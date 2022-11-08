@@ -23,7 +23,7 @@ const mapaDeRotas = {
   },
   perfil: {
     imagemAtivo: userBlue,
-    rotasAtivacao: ["/perfil/eu", "/perfil/eu/editar"],
+    rotasAtivacao: ["/perfil/eu", "/perfil/editar"],
     imagemPadrao: userGray,
   },
 };
@@ -74,18 +74,18 @@ const Navbar = ({ className }: any) => {
           <Image src={obterImagem("home")} alt="home" width={20} height={20} />
         </li>
 
-        <li onClick={() => aoClicarnoIcone("perfil")}>
-          <Image
-            src={obterImagem("perfil")}
-            alt="usuario"
-            width={20}
-            height={20}
-          />
-        </li>
         <li onClick={() => aoClicarnoIcone("publicacao")}>
           <Image
             src={obterImagem("publicacao")}
             alt="seguir"
+            width={20}
+            height={20}
+          />
+        </li>
+        <li onClick={() => aoClicarnoIcone("perfil")}>
+          <Image
+            src={obterImagem("perfil")}
+            alt="usuario"
             width={20}
             height={20}
           />

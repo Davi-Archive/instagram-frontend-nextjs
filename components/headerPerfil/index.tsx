@@ -9,11 +9,12 @@ import { useRouter } from "next/router";
 
 const usuarioService = new ApiUsuarioService();
 
-const HeaderPerfil = ({ usuarioLogado, usuario }: any) => {
+const HeaderPerfil = ({ usuarioLogado, usuario, estaNoPerfilPessoal }: any) => {
   const [estaSeguindoOUsuario, setEstaSeguindoOUsuario] = useState(
     usuario.segueEsseUsuario
   );
   const [quantidadeSeguidores, setQuantidadeSeguidores] = useState(0);
+
   const router = useRouter();
   useEffect(() => {
     if (!usuario) return;
@@ -22,6 +23,9 @@ const HeaderPerfil = ({ usuarioLogado, usuario }: any) => {
   }, [usuario]);
 
   const obterTextoBotaoSeguir = () => {
+    if (estaNoPerfilPessoal) {
+      return "Editar perfil";
+    }
     if (estaSeguindoOUsuario) {
       return "Deixar de seguir";
     }
@@ -29,13 +33,17 @@ const HeaderPerfil = ({ usuarioLogado, usuario }: any) => {
   };
 
   const obterCorDoBotaoSeguir = () => {
-    if (estaSeguindoOUsuario) {
+    if (estaSeguindoOUsuario || estaNoPerfilPessoal) {
       return "outline";
     }
     return "primary";
   };
 
   const manipularCliqueBotaoSeguir = async () => {
+    if (estaNoPerfilPessoal) {
+      return router.push("/perfil/editar");
+    }
+
     try {
       await usuarioService.alterarSeguir(usuario._id);
       setEstaSeguindoOUsuario(!estaSeguindoOUsuario);
@@ -58,7 +66,7 @@ const HeaderPerfil = ({ usuarioLogado, usuario }: any) => {
     <>
       <div className="cabecalhoPerfil largura30pctDesktop">
         <HeaderComAcoes
-          iconeEsquerda={leftArrow}
+          iconeEsquerda={estaNoPerfilPessoal ? null : leftArrow}
           titulo={usuario.nome}
           aoClicarAcaoEsquerda={aoClicarSetaEsquerda}
         />

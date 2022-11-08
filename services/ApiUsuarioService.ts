@@ -29,15 +29,15 @@ export default class ApiUsuarioService extends HttpService {
     }
 
     async pesquisa(termoDaPesquisa: any) {
-        return this.get('/pesquisa?filtro=' + termoDaPesquisa)
+        return await this.get('/pesquisa?filtro=' + termoDaPesquisa)
     }
 
     async obterPerfil(idUsuario: any) {
-        return this.get('/pesquisa?id=' + idUsuario)
+        return await this.get('/pesquisa?id=' + idUsuario)
     }
 
     async alterarSeguir(idUsuario:any){
-        return this.put(`/seguir?id=${idUsuario}`)
+        return await this.put(`/seguir?id=${idUsuario}`)
     }
 
     obterInformacoesDoUsuarioLogado() {
