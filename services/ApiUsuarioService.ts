@@ -23,6 +23,9 @@ export default class ApiUsuarioService extends HttpService {
     async cadastro(dados: any) {
         return await this.post('/cadastro', dados)
     }
+    async atualizarPerfil(dados: any) {
+        return await this.put('/usuario', dados)
+    }
 
     estaAuthenticado() {
         return localStorage.getItem('token') !== null;
@@ -36,7 +39,7 @@ export default class ApiUsuarioService extends HttpService {
         return await this.get('/pesquisa?id=' + idUsuario)
     }
 
-    async alterarSeguir(idUsuario:any){
+    async alterarSeguir(idUsuario: any) {
         return await this.put(`/seguir?id=${idUsuario}`)
     }
 
@@ -49,7 +52,7 @@ export default class ApiUsuarioService extends HttpService {
         }
     }
 
-    logout(){
+    logout() {
         localStorage.removeItem('name')
         localStorage.removeItem('email')
         localStorage.removeItem('token')

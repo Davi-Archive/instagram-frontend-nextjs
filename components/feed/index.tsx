@@ -17,7 +17,7 @@ const Feed = ({ usuarioLogado, idUsuario }: any) => {
       data = await feedService.carregarPostagem(idUsuario);
       retrievedData = data.data;
     }
-    console.log(retrievedData)
+    //console.log(retrievedData)
     let postagensFormatadas = retrievedData.map((postagem: any) => ({
       id: postagem._id,
       usuario: {
@@ -33,14 +33,12 @@ const Feed = ({ usuarioLogado, idUsuario }: any) => {
         mensagem: c.comentario,
       })),
     }));
-    //console.log(postagensFormatadas);
     setListaDePostagens(postagensFormatadas);
 
   }
 
   useEffect(() => {
     getFeed(idUsuario);
-    console.log("carregar o feed");
   }, [usuarioLogado, idUsuario]);
 
 
