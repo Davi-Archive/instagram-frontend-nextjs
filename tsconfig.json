@@ -20,7 +20,7 @@
     "**/*.ts",
     "**/*.js",
     "**/*.tsx",
-    "services/HttpService.ts"
+    "services/HttpService.js"
   ],
   "exclude": ["node_modules"]
 }

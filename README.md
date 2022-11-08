@@ -14,7 +14,9 @@
 git clone https://github.com/d1av/instagram-frontend-nextjs.git
 ```
 2. Create an .env.local in your cloned local repository folder
-3. Choose beetwen two possible methods to run it, Docker or Local Server
+3. Copy the variables from .env.example into you .env.local
+4. Change the variable in your .env.local to match your API url
+5. Choose beetwen two possible methods to run it, Docker or Local Server
 
 <details>
 <summary> <strong style="font-size: 30px">Local Server
