@@ -2,10 +2,10 @@ import { useRef, useEffect } from "react";
 import { UploadImage } from "../../types/UploadImageType";
 
 export default function UploadImagem({
-  className = "",
+  className,
   setImagem,
   imagemPreview,
-  imagemPreviewClassName = "",
+  imagemPreviewClassName,
   aoSetarAReferencia,
 }:UploadImage) {
   const referenciaInput = useRef(null);

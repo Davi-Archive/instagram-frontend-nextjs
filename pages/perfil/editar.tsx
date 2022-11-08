@@ -76,6 +76,7 @@ const EditarPerfil = ({ usuarioLogado }: any) => {
             imagemPreview={avatar?.preview || AvatarPadrao.src}
             aoSetarAReferencia={setInputAvatar}
             imagemPreviewClassName="avatar"
+            className="avatarDiv"
           />
 
           <span onClick={abrirSeletorDeArquivos}>Alterar foto do perfil</span>

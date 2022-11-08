@@ -33,14 +33,17 @@
 
     .rodapeDaPostagem {
       padding: 5px 16px;
+
       .comentariosDaPublicacao {
         margin-top: 8px;
+        max-height: 100px;
+        overflow-y: auto;
 
         .comentario {
-          p{
+          p {
             margin: 4px 0;
           }
-          strong{
+          strong {
             margin-right: 6px;
           }
         }
@@ -106,7 +109,7 @@
   }
   @media screen and (min-width: $desktopBreakpoint) {
     padding-top: 8px;
-    margin-top: 0px;;
+    margin-top: 0px;
 
     .postagem {
       .avatar {
