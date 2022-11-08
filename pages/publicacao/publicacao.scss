@@ -29,10 +29,35 @@
         width: 70%;
         margin: auto;
         padding: 12px;
-        &:hover{
-            border: none;
-            opacity: 0.8;
+        &:hover {
+          border: none;
+          opacity: 0.8;
         }
+      }
+    }
+
+    .segundaEtapa {
+      display: flex;
+      .uploadImagemContainer {
+        .imagemPreviewContainer {
+          width: 80px;
+          height: 80px;
+
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      textarea {
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: 12px;
+        font-family: $fontLight;
+        flex: 1;
+        color: $cinza02;
       }
     }
   }
