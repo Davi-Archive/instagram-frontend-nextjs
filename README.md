@@ -43,6 +43,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 <details>
 <summary> <strong style="font-size: 30px">Using Docker
+
 </strong>
 </summary>
 
